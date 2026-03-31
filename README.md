@@ -2,12 +2,11 @@
 
 > Personal [mpv](https://github.com/mpv-player/mpv) configuration files
 
-[![CI: pre-commit](https://results.pre-commit.ci/badge/github/deadnews/mpv-config/main.svg)](https://results.pre-commit.ci/latest/github/deadnews/mpv-config/main)
+[![CI: Main](https://img.shields.io/github/actions/workflow/status/deadnews/mpv-config/main.yml?branch=main&logo=github&logoColor=white&label=main)](https://github.com/deadnews/mpv-config)
 
 ## Installation
 
 ```sh
-pipx install dotbot
 dotbot -c install.conf.yaml
 ```
 
