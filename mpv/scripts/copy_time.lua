@@ -1,15 +1,13 @@
--- Copy the video's current time to the clipboard in HH:MM:SS.xxx format.
--- Default keybinding: F1
-
 --[[
-To configure this script use file ~~/script-opts/copy_time.conf.
+Copy the video's current playback time to the clipboard in HH:MM:SS.xxx format.
 
-Example configuration would be:
-
-mode=wayland|xclip|pbcopy|powershell
+Keybinding: F1
+Config:     ~~/script-opts/copy_time.conf
+Options:    mode=wayland|xclip|pbcopy|powershell  (required)
 --]]
 
-require("mp")
+local mp = require("mp")
+local msg = require("mp.msg")
 local options = require("mp.options")
 
 local opts = {
@@ -18,7 +16,7 @@ local opts = {
 options.read_options(opts)
 
 local function info(s)
-    mp.msg.info(s)
+    msg.info(s)
     mp.osd_message(s)
 end
 
@@ -29,30 +27,35 @@ local function timestamp(duration)
     return string.format("%02d:%02d:%06.3f", hours, minutes, seconds)
 end
 
+local popen_cmds = {
+    wayland = "wl-copy",
+    xclip = "xclip -silent -in -selection clipboard",
+    pbcopy = "pbcopy",
+    powershell = 'powershell -NoProfile -Command "$Input | Set-Clipboard"',
+}
+
 local function set_clipboard(text)
-    if opts.mode == "wayland" then
-        local pipe = io.popen("wl-copy", "w")
-        pipe:write(text)
-        pipe:close()
-    elseif opts.mode == "xclip" then
-        local pipe = io.popen("xclip -silent -in -selection clipboard", "w")
-        pipe:write(text)
-        pipe:close()
-    elseif opts.mode == "pbcopy" then
-        local pipe = io.popen("pbcopy", "w")
-        pipe:write(text)
-        pipe:close()
-    elseif opts.mode == "powershell" then
-        mp.commandv("run", "powershell", "set-clipboard", text)
-    else
-        mp.msg.error("Invalid mode: ", opts.mode)
+    local cmd = popen_cmds[opts.mode]
+    if not cmd then
+        msg.error("Invalid mode: " .. opts.mode)
+        return
     end
+    local pipe = io.popen(cmd, "w")
+    if not pipe then
+        msg.error("Failed to run: " .. cmd)
+        return
+    end
+    pipe:write(text)
+    pipe:close()
 end
 
 local function copy_time()
     local time_pos = mp.get_property_number("time-pos")
+    if not time_pos then
+        info("No active playback")
+        return
+    end
     local time = timestamp(time_pos)
-
     set_clipboard(time)
     info(string.format("Copied to Clipboard: %s", time))
 end

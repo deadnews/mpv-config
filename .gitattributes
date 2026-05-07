@@ -1,2 +1,1 @@
-.vscode/*.json linguist-language=jsonc
 *.conf linguist-language=ini

@@ -8,10 +8,7 @@ pc:
 
 update:
 	prek auto-update --freeze
-	pindock run --update
-
-scripts-up:
-	wget -O mpv/scripts/slicing.lua https://raw.githubusercontent.com/snylonue/mpv_slicing_copy/master/slicing_copy.lua
+	pinact run --update
 
 dotbot:
 	dotbot -c install.conf.yaml
