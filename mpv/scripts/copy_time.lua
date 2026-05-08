@@ -3,7 +3,7 @@ Copy the video's current playback time to the clipboard in HH:MM:SS.xxx format.
 
 Keybinding: F1
 Config:     ~~/script-opts/copy_time.conf
-Options:    mode=wayland|xclip|pbcopy|powershell  (required)
+Options:    mode=wayland|xclip|pbcopy|powershell
 --]]
 
 local mp = require("mp")
