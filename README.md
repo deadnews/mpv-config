@@ -6,8 +6,8 @@
 
 ## Scripts
 
-- [`copy_time.lua`](mpv/scripts/copy_time.lua): copy current playback time to clipboard
-- [`slicing.lua`](mpv/scripts/slicing.lua): cut a fragment of the playing file with ffmpeg
+- [`copy_time.lua`](mpv/scripts/copy_time.lua) - copy current playback time to clipboard
+- [`slicing.lua`](mpv/scripts/slicing.lua) - cut a fragment of the playing file with ffmpeg
 
 ## Links
 
