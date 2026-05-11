@@ -1,11 +1,5 @@
-ci:
-  autofix_commit_msg: "chore: auto fixes from `pre-commit` hooks"
-  autoupdate_commit_msg: "chore(pre-commit): autoupdate"
-  autoupdate_schedule: quarterly
-
 repos:
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v6.0.0
+  - repo: builtin
     hooks:
       - id: check-added-large-files
       - id: check-case-conflict
@@ -18,23 +12,23 @@ repos:
       - id: mixed-line-ending
         args: [--fix=lf]
 
-  - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v3.1.0
+  - repo: https://github.com/rbubley/mirrors-prettier
+    rev: 515f543f5718ebfd6ce22e16708bb32c68ff96e1 # frozen: v3.8.3
     hooks:
       - id: prettier
 
   - repo: https://github.com/crate-ci/typos
-    rev: v1.41.0
+    rev: bbaefadf97b0ec5fdc942684b647f1a6ab250274 # frozen: v1.46.0
     hooks:
       - id: typos
 
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.36.0
+    rev: f805888065fdb6162e1f800e50bb9460cbd223d6 # frozen: 0.37.2
     hooks:
       - id: check-github-workflows
       - id: check-renovate
 
-  - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.47.0
+  - repo: https://github.com/johnnymorganz/stylua
+    rev: 080c3aa843e9ae6541d9c167ac4f913c5e34730a # frozen: v2.4.1
     hooks:
-      - id: markdownlint-fix
+      - id: stylua
