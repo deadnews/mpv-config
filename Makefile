@@ -1,4 +1,4 @@
-.PHONY: all clean test default dotbot install check pc
+.PHONY: check dotbot pc update
 
 default: check
 
@@ -7,7 +7,7 @@ pc:
 	prek run -a
 
 update:
-	prek auto-update --freeze
+	prek update
 	pinact run --update
 
 dotbot:

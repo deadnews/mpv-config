@@ -1,0 +1,52 @@
+[update]
+freeze = true
+
+[[repos]]
+repo = "builtin"
+hooks = [
+  { id = "check-added-large-files" },
+  { id = "check-case-conflict" },
+  { id = "check-merge-conflict" },
+  { id = "check-toml" },
+  { id = "check-yaml" },
+  { id = "detect-private-key" },
+  { id = "end-of-file-fixer" },
+  { id = "trailing-whitespace" },
+  { id = "mixed-line-ending", args = ["--fix=lf"] },
+]
+
+[[repos]]
+repo = "https://github.com/rbubley/mirrors-prettier"
+rev = "c035d5c3fc2ce295b961030061d09de67d9203dc" # frozen: v3.10.1
+hooks = [
+  { id = "prettier" },
+]
+
+[[repos]]
+repo = "https://github.com/crate-ci/typos"
+rev = "276087d9a4f06398b3e04825487805e2d7375888" # frozen: v1.52.2
+hooks = [
+  { id = "typos" },
+]
+
+[[repos]]
+repo = "https://github.com/python-jsonschema/check-jsonschema"
+rev = "a76b92851fc9eede9f9bc4073eb55202f34eb0df" # frozen: 0.39.0
+hooks = [
+  { id = "check-github-workflows" },
+  { id = "check-renovate" },
+]
+
+[[repos]]
+repo = "https://github.com/compwa/taplo-pre-commit"
+rev = "ade0f95ddcf661c697d4670d2cfcbe95d0048a0a" # frozen: v0.9.3
+hooks = [
+  { id = "taplo-format" },
+]
+
+[[repos]]
+repo = "https://github.com/johnnymorganz/stylua"
+rev = "56f9630407f6bf6ee524fb1d7fe71f005a570478" # frozen: v2.6.0
+hooks = [
+  { id = "stylua" },
+]
